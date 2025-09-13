@@ -3,7 +3,7 @@ package com.java.pertemuan3.tugas.model;
 import java.util.ArrayList;
 
 
-public class ProductTableModel<ProductModel> {
+public class ProductTableModel extends AbstractTableModel {
     private ArrayList<ProductModel> products;
 
     public ProductTableModel(ArrayList<ProductModel> products) {
@@ -18,14 +18,17 @@ public class ProductTableModel<ProductModel> {
         products.remove(index);
     }
 
+    @Override
     public int getRowCount() {
         return products.size();
     }
 
+    @Override
     public int getColumnCount() {
         return 4;
     }
 
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         ProductModel product = products.get(rowIndex);
         switch (columnIndex) {

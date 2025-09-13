@@ -1,4 +1,4 @@
-package com.java.pertemuan3.tugas;
+package com.java.pertemuan3.tugas.model;
 
 public class ProductModel {
 
@@ -33,7 +33,7 @@ public class ProductModel {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public void setQty(int qty) {
         this.qty = qty;
     }
