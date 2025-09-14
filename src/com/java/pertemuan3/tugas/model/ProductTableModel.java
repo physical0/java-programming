@@ -1,10 +1,9 @@
 package com.java.pertemuan3.tugas.model;
-
 import java.util.ArrayList;
 
-
-public class ProductTableModel extends AbstractTableModel {
+public class ProductTableModel extends AbstractTableModels {
     private ArrayList<ProductModel> products;
+    private String[] columnNames = {"Code", "Name", "Quantity", "Price"};
 
     public ProductTableModel(ArrayList<ProductModel> products) {
         this.products = products;
@@ -19,13 +18,18 @@ public class ProductTableModel extends AbstractTableModel {
     }
 
     @Override
+    public String getColumnName(int index) {
+        return columnNames[index];
+    }
+
+    @Override
     public int getRowCount() {
         return products.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return columnNames.length;
     }
 
     @Override
