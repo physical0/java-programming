@@ -1,7 +1,8 @@
 package com.java.pertemuan3.tugas.model;
 import java.util.ArrayList;
+import javax.swing.table.AbstractTableModel;
 
-public class ProductTableModel extends AbstractTableModels {
+public class ProductTableModel extends AbstractTableModel {
     private ArrayList<ProductModel> products;
     private String[] columnNames = {"Code", "Name", "Quantity", "Price"};
 
@@ -11,10 +12,12 @@ public class ProductTableModel extends AbstractTableModels {
 
     public void addProduct(ProductModel product) {
         products.add(product);
+        fireTableRowsInserted(products.size()-1, products.size()-1);
     }
 
     public void removeProduct(int index) {
         products.remove(index);
+        fireTableRowsDeleted(index, index);
     }
 
     @Override
@@ -48,5 +51,7 @@ public class ProductTableModel extends AbstractTableModels {
                 return null;
         }
     }
+
+
 
 }

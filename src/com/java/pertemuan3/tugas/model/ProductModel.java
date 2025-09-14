@@ -7,7 +7,7 @@ public class ProductModel {
     private int qty;
     private double price;
 
-    public ProductModel(String code, String name, int qty, double price) {
+    public ProductModel(String code, String name, double price, int qty) {
         this.code = code;
         this.name = name;
         this.qty = qty;

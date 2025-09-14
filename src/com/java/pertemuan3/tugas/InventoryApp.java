@@ -3,6 +3,7 @@ import com.java.pertemuan3.tugas.model.ProductModel;
 import com.java.pertemuan3.tugas.model.ProductTableModel;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -10,24 +11,31 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-public class App extends JFrame {
+public class InventoryApp extends JFrame {
 
     ArrayList<ProductModel> products = new ArrayList<>();
     ProductTableModel productTableModel = new ProductTableModel(products);
     JPanel mainPanel = new JPanel();
     JLabel[] labels = new JLabel[productTableModel.getColumnCount()];
     JTextField[] textFields = new JTextField[productTableModel.getColumnCount()];
+    JPanel topPanel = new JPanel();
+    JPanel centerPanel = new JPanel();
+    JTable bottomPanel = new JTable(productTableModel);
+    JScrollPane scrollPane = new JScrollPane(bottomPanel);
 
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, Hey there!");
-        new App();
+        System.out.println("Hello, Hey there! This is a test sout.");
+        new InventoryApp();
     }
 
-    public App() {
+    public InventoryApp() {
 
         mainPanel.setBackground(Color.GRAY);
         mainPanel.setBounds(0, 0, 800, 600);
@@ -45,16 +53,14 @@ public class App extends JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
         setVisible(true);
+        setResizable(false);
         add(mainPanel);
 
     }
 
     private void initComponents() {
         
-        JPanel topPanel = new JPanel();
-        JPanel centerPanel = new JPanel();
-        JPanel bottomPanel = new JPanel();
-
+        scrollPane.setPreferredSize(new Dimension(780, 50));
 
         int i = 0;
         for (JLabel label : labels) {
@@ -65,25 +71,25 @@ public class App extends JFrame {
             i++;
         }
 
-        int j = 0;
-        for (JTextField textField : textFields) {
-            textField = new JTextField();
-            textField.setBounds(250, 20 + j * 50, 500, 20);
-            topPanel.add(textField);
-            j++;
+        for (int j = 0; j < textFields.length; j++) {
+            textFields[j] = new JTextField();
+            textFields[j].setBounds(250, 20 + j * 50, 500, 20);
+            topPanel.add(textFields[j]);
         }
 
         Button addButton = new Button("Add Product");
         Button removeButton = new Button("Remove Product from the List");
 
         addButton.setBounds(50, 400, 100, 30);
+        addButton.addActionListener(e -> addButtonHelper());
         removeButton.setBounds(200, 400, 200, 30);
+        removeButton.addActionListener(e -> removeButtonHelper());
+
         centerPanel.add(addButton);
         centerPanel.add(removeButton);
 
 
         // Panel controls
-        topPanel.setBounds(0, 0, 800, 300);
         topPanel.setBackground(Color.LIGHT_GRAY);
         topPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         topPanel.setLayout(null);
@@ -104,11 +110,43 @@ public class App extends JFrame {
         mainPanel.add(topPanel, gbc);
 
         gbc.gridy = 1;
-        gbc.weighty = 0.015;  
+        gbc.weighty = 0.011;  
         mainPanel.add(centerPanel, gbc);
 
         gbc.gridy = 2;
-        gbc.weighty = 0.56; 
-        mainPanel.add(bottomPanel, gbc);
+        gbc.weighty = 0.564; 
+        mainPanel.add(scrollPane, gbc);
     }
+
+    private void addButtonHelper() {
+        try {
+            String id = textFields[0].getText();
+            String name = textFields[1].getText();
+            int price = Integer.parseInt(textFields[2].getText());
+            int stock = Integer.parseInt(textFields[3].getText());
+
+            ProductModel product = new ProductModel(id, name, price, stock);
+            products.add(product);
+            productTableModel.fireTableDataChanged();
+        }
+        catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "There is a field not filled!");
+        }
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter valid price and quantity!");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage());
+        }
+    }
+
+    private void removeButtonHelper() {
+        int selectedRow = bottomPanel.getSelectedRow();
+        if (selectedRow >= 0) {
+            productTableModel.removeProduct(selectedRow);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a product to remove!");
+        }
+    }
+
 }
