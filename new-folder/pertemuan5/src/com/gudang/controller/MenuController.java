@@ -11,8 +11,18 @@ public class MenuController {
     
     @FXML
     private void openProduct() {
-        // Placeholder for Product management screen
-        showInfoAlert("Product Management", "Product Management feature will be available soon.");
+        // Open Product management screen
+        try {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Product.fxml"));
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Product Management");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showInfoAlert("Error", "Failed to open Product Management: " + e.getMessage());
+        }
     }
     
     @FXML
