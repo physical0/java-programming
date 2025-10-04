@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="350.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/style.css">
+    <children>
+        <VBox layoutX="14.0" layoutY="14.0" prefHeight="322.0" prefWidth="372.0" spacing="12.0"
+            styleClass="main-container">
+            <children>
+                <Label fx:id="titleLabel" text="Add Customer" styleClass="header-label" />
+                <Label text="Customer ID" styleClass="form-label" />
+                <TextField fx:id="txtId" promptText="Enter Customer ID" />
+                <Label text="Customer Name" styleClass="form-label" />
+                <TextField fx:id="txtName" promptText="Enter Customer Name" />
+                <Label text="Phone" styleClass="form-label" />
+                <TextField fx:id="txtPhone" promptText="Enter Phone Number" />
+                <Label text="Email" styleClass="form-label" />
+                <TextField fx:id="txtEmail" promptText="Enter Email Address" />
+                <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                    <children>
+                        <Button mnemonicParsing="false" fx:id="btnCancel" text="Cancel"
+                            styleClass="clear-button" />
+                        <Button mnemonicParsing="false" fx:id="btnSave" text="Save"
+                            defaultButton="true" />
+                    </children>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
