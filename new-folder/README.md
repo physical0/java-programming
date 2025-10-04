@@ -1,1 +1,1 @@
-this is the root repository
+## this is the root repository for all java-prog projects
