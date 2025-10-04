@@ -16,7 +16,7 @@ public class App extends Application {
             scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Login - Aplikasi Gudang");
+            primaryStage.setTitle("Inventory Management App - Login");
             primaryStage.show();
         } catch(Exception e) {
             e.printStackTrace();

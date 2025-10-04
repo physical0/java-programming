@@ -4,14 +4,12 @@
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="com.gudang.controller.LoginController"
+    fx:controller="com.gudang.controller.MenuController"
     prefWidth="200" prefHeight="300" alignment="TOP_CENTER" spacing="10">
     <children>
-        <Label text="Inventory App Login" />
-        <TextField fx:id="txtUser" promptText="Username" />
-        <PasswordField fx:id="txtPass" />
-        <Button text="Login" onAction="#loginAction" />
-        <Label fx:id="lblStatus" />
+        <Label text="Main Menu" />
+        <Button text="Product Management" onAction="#openProduct" />
+        <Button text="Customer Management" onAction="#openCustomer" />
     </children>
     <padding>
         <Insets top="20" right="20" bottom="20" left="20" />
