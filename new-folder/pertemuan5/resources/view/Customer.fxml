@@ -28,8 +28,8 @@
                                 <TextField fx:id="txtName" promptText="Insert Customer Name" />
                                 <Label text="Phone" styleClass="form-label" />
                                 <TextField fx:id="txtPhone" promptText="Insert Phone Number" />
-                                <Label text="Address" styleClass="form-label" />
-                                <TextField fx:id="txtAddress" promptText="Insert Address" />
+                                <Label text="Email" styleClass="form-label" />
+                                <TextField fx:id="txtEmail" promptText="Insert Email Address" />
                                 <HBox spacing="10.0" alignment="CENTER">
                                     <children>
                                         <Button mnemonicParsing="false" onAction="#addCustomer"
@@ -52,13 +52,16 @@
                                 </Button>
                             </children>
                         </VBox>
-                        <TableView fx:id="tableCustomer" prefHeight="400.0" prefWidth="400.0">
+                        <TableView fx:id="tableCustomer" prefHeight="400.0" prefWidth="480.0">
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
                             <columns>
-                                <TableColumn fx:id="colIdTitle" prefWidth="75.0" text="ID" />
+                                <TableColumn fx:id="colIdTitle" prefWidth="120.0" text="ID" />
                                 <TableColumn fx:id="colNameTitle" prefWidth="120.0" text="Name" />
-                                <TableColumn fx:id="colPhoneTitle" prefWidth="100.0" text="Phone" />
-                                <TableColumn fx:id="colAddressTitle" prefWidth="100.0"
-                                    text="Address" />
+                                <TableColumn fx:id="colPhoneTitle" prefWidth="120.0" text="Phone" />
+                                <TableColumn fx:id="colEmailTitle" prefWidth="120.0"
+                                    text="Email" />
                             </columns>
                         </TableView>
                     </children>

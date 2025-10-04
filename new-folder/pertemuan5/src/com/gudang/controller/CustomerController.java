@@ -5,7 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.collections.FXCollections;
@@ -22,12 +22,12 @@ public class CustomerController implements Initializable {
     @FXML private TextField txtId;
     @FXML private TextField txtName;
     @FXML private TextField txtPhone;
-    @FXML private TextField txtAddress;
+    @FXML private TextField txtEmail;
     @FXML private TableView<Customer> tableCustomer;
     @FXML private TableColumn<Customer, String> colIdTitle;
     @FXML private TableColumn<Customer, String> colNameTitle;
     @FXML private TableColumn<Customer, String> colPhoneTitle;
-    @FXML private TableColumn<Customer, String> colAddressTitle;
+    @FXML private TableColumn<Customer, String> colEmailTitle; 
 
     private ObservableList<Customer> customerList = FXCollections.observableArrayList();
     
@@ -36,9 +36,14 @@ public class CustomerController implements Initializable {
         colIdTitle.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNameTitle.setCellValueFactory(new PropertyValueFactory<>("name"));
         colPhoneTitle.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        colAddressTitle.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colEmailTitle.setCellValueFactory(new PropertyValueFactory<>("email")); 
 
-        
+        txtPhone.setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getText().matches("[0-9]*")) {
+                return change;
+            }
+            return null;
+        }));
 
         tableCustomer.setItems(customerList);
         
@@ -55,16 +60,28 @@ public class CustomerController implements Initializable {
             String id = txtId.getText();
             String name = txtName.getText();
             String phone = txtPhone.getText();
-            String address = txtAddress.getText();
-            
-            // Basic validation
-            if (id.isEmpty() || name.isEmpty()) {
-                showAlert(AlertType.ERROR, "Data incomplete", "ID and Name must be filled");
+            String email = txtEmail.getText(); 
+
+            if (id.isEmpty() || name.isEmpty() || email.isEmpty()) {
+                showAlert(AlertType.ERROR, "Data incomplete", "ID, Name, and Email must be filled");
+                return;
+            }
+
+            // email address validation
+            if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+                showAlert(AlertType.ERROR, "Invalid Input", "Email address is not valid");
                 return;
             }
             
-            Customer newCustomer = new Customer(id, name, phone, address);
-            
+                
+            // Phone format validation
+            if (phone.length() < 10 || phone.length() > 15) {
+                showAlert(AlertType.ERROR, "Invalid Input", "Phone number must be between 10-15 digits");
+                return;
+            }
+
+            Customer newCustomer = new Customer(id, name, phone, email);
+
             customerList.add(newCustomer);
             
             clearForm();
@@ -89,11 +106,15 @@ public class CustomerController implements Initializable {
             String id = txtId.getText();
             String name = txtName.getText();
             String phone = txtPhone.getText();
-            String address = txtAddress.getText();
-            
-            // Basic validation
-            if (id.isEmpty() || name.isEmpty()) {
-                showAlert(AlertType.ERROR, "Data incomplete", "ID and Name must be filled");
+            String email = txtEmail.getText();
+
+            if (id.isEmpty() || name.isEmpty() || email.isEmpty()) {
+                showAlert(AlertType.ERROR, "Data incomplete", "ID, Name, and Email must be filled");
+                return;
+            }
+
+            if (phone.length() < 10 || phone.length() > 15) {
+                showAlert(AlertType.ERROR, "Invalid Input", "Phone number must be between 10-15 digits");
                 return;
             }
 
@@ -101,7 +122,7 @@ public class CustomerController implements Initializable {
             selectedCustomer.setId(id);
             selectedCustomer.setName(name);
             selectedCustomer.setPhone(phone);
-            selectedCustomer.setAddress(address);
+            selectedCustomer.setEmail(email);
             
             tableCustomer.refresh();
             
@@ -140,7 +161,7 @@ public class CustomerController implements Initializable {
         txtId.clear();
         txtName.clear();
         txtPhone.clear();
-        txtAddress.clear();
+        txtEmail.clear(); 
         tableCustomer.getSelectionModel().clearSelection();
     }
     
@@ -148,7 +169,7 @@ public class CustomerController implements Initializable {
         txtId.setText(customer.getId());
         txtName.setText(customer.getName());
         txtPhone.setText(customer.getPhone());
-        txtAddress.setText(customer.getAddress());
+        txtEmail.setText(customer.getEmail());
     }
     
     
