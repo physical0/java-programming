@@ -32,7 +32,6 @@ public class LoginController {
             lblStatus.setText("Password is empty!");
             return;
         }
-        // simple stub for demo
         if (user.equals("admin") && pass.equals("admin")) {
             lblStatus.setText("Login successful");
 
