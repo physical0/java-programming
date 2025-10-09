@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.uts.controllers.MenuController"
+    prefWidth="200" prefHeight="300" alignment="TOP_CENTER" spacing="10">
+    <children>
+        <Label text="Main Menu" />
+        <Button text="Book Management" onAction="#openBook" />
+        <Button text="Member Management" onAction="#openMember" />
+        <Button text="Book Loaning" onAction="#openLoan" />
+    </children>
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+</VBox>
