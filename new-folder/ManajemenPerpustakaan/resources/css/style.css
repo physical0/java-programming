@@ -1,0 +1,127 @@
+/* Global Styles */
+.root {
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Main Container */
+.main-container {
+    -fx-background-color: #f5f5f5;
+}
+
+/* Header */
+.page-title {
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 10 0;
+    -fx-border-color: transparent transparent #3498db transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.section-header {
+    -fx-text-fill: #2c3e50;
+    -fx-font-weight: bold;
+}
+
+/* Form Container */
+.form-container {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);
+}
+
+.form-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495e;
+}
+
+.form-field {
+    -fx-background-radius: 3;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 3;
+    -fx-padding: 8;
+}
+
+.form-field:focused {
+    -fx-border-color: #3498db;
+    -fx-background-color: #f8f9fa;
+}
+
+/* Button Styles */
+.primary-button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 3;
+}
+
+.primary-button:hover {
+    -fx-background-color: #2980b9;
+    -fx-cursor: hand;
+}
+
+.secondary-button {
+    -fx-background-color: #2ecc71;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 3;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #27ae60;
+    -fx-cursor: hand;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 3;
+}
+
+.delete-button:hover {
+    -fx-background-color: #c0392b;
+    -fx-cursor: hand;
+}
+
+/* Table Container */
+.table-container {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);
+    -fx-padding: 15;
+}
+
+.book-table {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 3;
+}
+
+.book-table .column-header {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.book-table .column-header .label {
+    -fx-text-fill: white;
+    -fx-padding: 8 5;
+}
+
+.book-table .table-row-cell:odd {
+    -fx-background-color: #f5f9fc;
+}
+
+.book-table .table-row-cell:selected {
+    -fx-background-color: #d4e6f1;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Action buttons container */
+.action-buttons {
+    -fx-padding: 10 0 0 0;
+}

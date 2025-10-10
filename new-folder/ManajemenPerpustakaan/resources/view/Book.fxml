@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="15" styleClass="main-container" xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.uts.controllers.BooksController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+    <children>
+        <!-- Header -->
+        <HBox styleClass="header-container">
+            <children>
+                <Label text="Book Management" styleClass="page-title">
+                    <font>
+                        <Font name="System Bold" size="22" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+
+        <!-- Form and Table Container -->
+        <HBox spacing="20" VBox.vgrow="ALWAYS">
+            <!-- Form Section -->
+            <VBox spacing="15" styleClass="form-container" minWidth="350" maxWidth="350">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15" />
+                </padding>
+
+                <Label text="Book Details" styleClass="section-header">
+                    <font>
+                        <Font name="System Bold" size="16" />
+                    </font>
+                </Label>
+
+                <GridPane hgap="10" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+
+                    <Label text="Book ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                        styleClass="form-label" />
+                    <TextField fx:id="bookIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                        styleClass="form-field" />
+
+                    <Label text="Book Title:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                        styleClass="form-label" />
+                    <TextField fx:id="titleField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                        styleClass="form-field" />
+
+                    <Label text="Author:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                        styleClass="form-label" />
+                    <TextField fx:id="authorField" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                        styleClass="form-field" />
+
+                    <Label text="Publication Year:" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                        styleClass="form-label" />
+                    <TextField fx:id="yearField" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                        styleClass="form-field" />
+                </GridPane>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="button-container">
+                    <padding>
+                        <Insets top="10" />
+                    </padding>
+                    <Button fx:id="addButton" text="Add Book" onAction="#handleAddBook"
+                        styleClass="primary-button" />
+                </HBox>
+            </VBox>
+
+            <!-- Table Section -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="table-container">
+                <Label text="Book Inventory" styleClass="section-header">
+                    <font>
+                        <Font name="System Bold" size="16" />
+                    </font>
+                </Label>
+
+                <TableView fx:id="booksTable" VBox.vgrow="ALWAYS" styleClass="book-table">
+                    <columns>
+                        <TableColumn fx:id="idColumn" text="Book ID" prefWidth="80" />
+                        <TableColumn fx:id="titleColumn" text="Book Title" prefWidth="200" />
+                        <TableColumn fx:id="authorColumn" text="Author" prefWidth="150" />
+                        <TableColumn fx:id="yearColumn" text="Publication Year" prefWidth="120" />
+                    </columns>
+                    <placeholder>
+                        <Label text="No books available" />
+                    </placeholder>
+                </TableView>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT" styleClass="action-buttons">
+                    <Button fx:id="editButton" text="Edit" onAction="#handleEditBook"
+                        styleClass="secondary-button" />
+                    <Button fx:id="deleteButton" text="Delete" onAction="#handleDeleteBook"
+                        styleClass="delete-button" />
+                </HBox>
+            </VBox>
+        </HBox>
+    </children>
+</VBox>

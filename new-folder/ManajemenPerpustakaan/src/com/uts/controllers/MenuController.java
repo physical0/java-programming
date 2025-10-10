@@ -15,6 +15,7 @@ public class MenuController {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Book.fxml")); 
             Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
 
@@ -27,7 +28,7 @@ public class MenuController {
     @FXML
     private void openMember() {
         try {
-        Stage stage = new Stage();
+            Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Member.fxml")); 
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
@@ -43,7 +44,7 @@ public class MenuController {
     private void openLoan() {
         try {
             Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Loan.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Transactions.fxml"));
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.show();
@@ -52,5 +53,13 @@ public class MenuController {
             e.printStackTrace();
             showError("Failed to open Loan window");
         }
+    }
+
+    private void showError(String message) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
