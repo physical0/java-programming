@@ -31,6 +31,7 @@ public class MenuController {
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Member.fxml")); 
             Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
 
