@@ -155,6 +155,18 @@ public class TransactionsController {
         memberComboBox.setValue(null);
         bookComboBox.setValue(null);
     }
+
+    @FXML
+    private void handleReturn() {
+        TransactionRecord selectedTransaction = transactionsTable.getSelectionModel().getSelectedItem();
+        if (selectedTransaction != null) {
+            transactionsList.remove(selectedTransaction);
+        } else {
+            showValidationError("Selection Error", "Please select a transaction to return");
+        }
+    }
+
+
     
     private void showValidationError(String title, String message) {
         Alert alert = new Alert(AlertType.WARNING);

@@ -81,7 +81,18 @@
                         <Label text="No transactions available" />
                     </placeholder>
                 </TableView>
+
+                <!-- Adding Return Button Below Table -->
+                <HBox alignment="CENTER_RIGHT" spacing="10">
+                    <padding>
+                        <Insets top="10" />
+                    </padding>
+                    <Button fx:id="returnButton" text="Return Selected Book"
+                        onAction="#handleReturn"
+                        styleClass="secondary-button" />
+                </HBox>
             </VBox>
+
         </HBox>
     </children>
 </VBox>

@@ -13,7 +13,7 @@ public class App extends Application {
             Scene scene = new Scene(loader.load());
 
             // Add external CSS
-            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/css/menu.css").toExternalForm());
 
             primaryStage.setScene(scene);
             primaryStage.setTitle("");
