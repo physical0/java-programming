@@ -1,7 +1,6 @@
 package com.uts.controllers;
 
 import java.util.Optional;
-
 import com.uts.model.Member;
 
 import javafx.collections.FXCollections;
@@ -10,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -35,6 +33,10 @@ public class MembersController {
     private ObservableList<Member> membersList = FXCollections.observableArrayList();
     private boolean isEditMode = false;
     private Member memberBeingEdited;
+
+    public ObservableList<Member> getMembersList() {
+        return membersList;
+    }
     
     @FXML
     public void initialize() {
@@ -195,7 +197,7 @@ public class MembersController {
         memberIdField.setDisable(false);
         addButton.setText("Add Member");
         
-        Book selectedMember = membersTable.getSelectionModel().getSelectedItem();
+        Member selectedMember = membersTable.getSelectionModel().getSelectedItem();
         deleteButton.setDisable(selectedMember == null);
         
         clearFields();

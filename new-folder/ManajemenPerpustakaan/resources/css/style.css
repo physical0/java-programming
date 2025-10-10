@@ -62,7 +62,7 @@
 }
 
 .secondary-button {
-    -fx-background-color: #2ecc71;
+    -fx-background-color: #2f98c8;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-padding: 8 15;
@@ -70,12 +70,12 @@
 }
 
 .secondary-button:hover {
-    -fx-background-color: #27ae60;
+    -fx-background-color: #1da1a3;
     -fx-cursor: hand;
 }
 
 .delete-button {
-    -fx-background-color: #e74c3c;
+    -fx-background-color: #2f98c8;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-padding: 8 15;
@@ -83,7 +83,7 @@
 }
 
 .delete-button:hover {
-    -fx-background-color: #c0392b;
+    -fx-background-color: #1da1a3;
     -fx-cursor: hand;
 }
 

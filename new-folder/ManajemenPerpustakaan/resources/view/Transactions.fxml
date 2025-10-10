@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="15" styleClass="main-container" xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.uts.controllers.TransactionsController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+    <children>
+        <!-- Header -->
+        <HBox styleClass="header-container">
+            <children>
+                <Label text="Book Borrowing" styleClass="page-title">
+                    <font>
+                        <Font name="System Bold" size="22" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+
+        <!-- Form and Table Container -->
+        <HBox spacing="20" VBox.vgrow="ALWAYS">
+            <!-- Form Section -->
+            <VBox spacing="15" styleClass="form-container" minWidth="350" maxWidth="350">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15" />
+                </padding>
+
+                <Label text="Borrowing Details" styleClass="section-header">
+                    <font>
+                        <Font name="System Bold" size="16" />
+                    </font>
+                </Label>
+
+                <GridPane hgap="10" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+
+                    <Label text="Select Member:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                        styleClass="form-label" />
+                    <ComboBox fx:id="memberComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                        GridPane.hgrow="ALWAYS" maxWidth="Infinity" styleClass="form-field" />
+
+                    <Label text="Select Book:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                        styleClass="form-label" />
+                    <ComboBox fx:id="bookComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                        GridPane.hgrow="ALWAYS" maxWidth="Infinity" styleClass="form-field" />
+                </GridPane>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="button-container">
+                    <padding>
+                        <Insets top="10" />
+                    </padding>
+                    <Button fx:id="borrowButton" text="Borrow" onAction="#handleBorrow"
+                        styleClass="primary-button" />
+                </HBox>
+            </VBox>
+
+            <!-- Table Section -->
+            <VBox spacing="10" HBox.hgrow="ALWAYS" styleClass="table-container">
+                <Label text="Borrowing History" styleClass="section-header">
+                    <font>
+                        <Font name="System Bold" size="16" />
+                    </font>
+                </Label>
+
+                <TableView fx:id="transactionsTable" VBox.vgrow="ALWAYS" styleClass="book-table">
+                    <columns>
+                        <TableColumn fx:id="memberColumn" text="Member Name" prefWidth="150" />
+                        <TableColumn fx:id="bookColumn" text="Book Title" prefWidth="200" />
+                        <TableColumn fx:id="dateColumn" text="Borrow Date" prefWidth="100" />
+                    </columns>
+                    <placeholder>
+                        <Label text="No transactions available" />
+                    </placeholder>
+                </TableView>
+            </VBox>
+        </HBox>
+    </children>
+</VBox>
